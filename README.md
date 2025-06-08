@@ -8,13 +8,14 @@ gemini-chat-agent/
 ├── backend_fastapi/           # FastAPI Backend
 │   ├── app/
 │   │   ├── Agent/            # Gemini Agent Implementation
+│   │   ├── api/
 │   │   ├── core/             # Core Functionality
+│   │   ├── utils/
 │   │   ├── database/         # Database Operations
 │   │   └── main.py          # FastAPI Entry Point
-│   ├── migrations/           # Database Migrations
-│   ├── requirements.txt      # Python Dependencies
-│   ├── alembic.ini          # Migration Config
-│   └── Dockerfile           # Backend Container Config
+│   ├── logs/
+├── requirements.txt      # Python Dependencies
+│
 │
 └── frontend_streamlit/       # Streamlit Frontend
     └── application/
@@ -37,13 +38,6 @@ gemini-chat-agent/
 - Docker (optional)
 - Google API Key for Gemini
 
-## 🚀 Installation
-
-1. Clone the repository:
-```powershell
-git clone https://github.com/yourusername/gemini-chat-agent.git
-cd gemini-chat-agent
-```
 
 2. Set up virtual environment:
 ```powershell
@@ -51,61 +45,40 @@ python -m venv venv
 .\venv\Scripts\activate
 ```
 
-3. Install backend dependencies:
+3. Install dependencies:
 ```powershell
-cd backend_fastapi
-pip install -r requirements.txt
-```
-
-4. Install frontend dependencies:
-```powershell
-cd ../frontend_streamlit
 pip install -r requirements.txt
 ```
 
 ## ⚙️ Configuration
 
-1. Create a `.env` file in the backend directory:
+1. Create a `.env` file in the directory:
 ```env
-GOOGLE_API_KEY=your_gemini_api_key
-JWT_SECRET_KEY=your_jwt_secret
-DATABASE_URL=sqlite:///./chat.db
+DATABASE_URL
+JWT_SECRET_KEY
+GEMINI_API_KEY
+TAVILY_API_KEY
+SERPAPI_API_KEY
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASSWORD
 ```
 
-2. Initialize the database:
-```powershell
-cd backend_fastapi
-alembic upgrade head
-```
 
 ## 🏃‍♂️ Running the Application
 
 ### Backend (FastAPI)
 ```powershell
-cd backend_fastapi
-uvicorn app.main:app --reload --port 8000
+uvicorn backend_fastapi.app.main:app --reload
 ```
 
 ### Frontend (Streamlit)
 ```powershell
-cd frontend_streamlit
-streamlit run application/app.py
+streamlit run frontend_streamlit/application/app.py
 ```
 
-## 🐳 Docker Support
-
-Build and run the backend:
-```powershell
-cd backend_fastapi
-docker build -t gemini-chat-backend .
-docker run -d -p 8000:8000 -v chat-data:/app/data gemini-chat-backend
-```
-
-## 📚 API Documentation
-
-Once running, access the API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
 
 ## 🔧 Key Components
 
