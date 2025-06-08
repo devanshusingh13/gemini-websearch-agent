@@ -1,0 +1,18 @@
+venv/
+.venv/
+# Python bytecode files\
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment folders
+frontend_streamlit/venv/
+backend_fastapi/venv/
+
+# Environment variables
+.env
+.vscode/
+# Streamlit secrets file
+frontend_streamlit/.streamlit/secrets.toml
